@@ -1,97 +1,98 @@
 <!DOCTYPE html>
-<html lang="es-ES">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Empleados</title>
-    <link rel="alternate" href="atom.xml" type="application/atom+xml" title="Atom">
+    <title>Hotel Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 flex h-screen">
 
-    
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h2>Dashboard</h2>
-        <a href="#">🏠 Inicio</a>
-        <a href="#">📊 Reportes</a>
+    <aside class="w-64 bg-white border-r border-gray-200 p-6">
+        <h1 class="text-xl font-bold mb-8">Dashboard Hotel</h1>
+        <nav class="space-y-4">
+            <a href="#" class="block text-gray-600 hover:text-blue-600">Inicio</a>
+            <a href="#" class="block text-blue-600 font-semibold">Reportes</a>
+        </nav>
+    </aside>
 
-        <a href="#" class="logout">🔓 Cerrar sesión</a>
-        <!-- Main -->
-    <div class="main">
-        <div class="breadcrumb">Inicio > Clientes</div>
+    <main class="flex-1 p-8">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold">Registro de Huéspedes</h2>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">REGISTRAR</button>
+        </div>
 
-        <div class="card">
-            <div class="card-header">
-                <h2>REPORTE DE CLIENTES</h2>
-                <button class="btn">REGISTRAR</button>
-            </div>
-
-            <table>
-                <thead>
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <table class="w-full text-left">
+                <thead class="bg-gray-800 text-white">
                     <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>DNI</th>
-                        <th>Teléfono</th>
-                        <th>Dirección</th>
-                        <th>Opciones</th>
+                        <th class="p-4">ID</th>
+                        <th class="p-4">Nombre</th>
+                        <th class="p-4">Habitación</th>
+                        <th class="p-4">Check-in</th>
+                        <th class="p-4">Check-out</th>
+                        <th class="p-4">Opciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Juan</td>
-                        <td>Pérez</td>
-                        <td>12345678</td>
-                        <td>987654321</td>
-                        <td>Lima, Perú</td>
-                        <td class="actions">
-                            <button class="edit">Editar</button>
-                            <button class="delete">Eliminar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>María</td>
-                        <td>Gómez</td>
-                        <td>87654321</td>
-                        <td>912345678</td>
-                        <td>Arequipa, Perú</td>
-                        <td class="actions">
-                            <button class="edit">Editar</button>
-                            <button class="delete">Eliminar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Carlos</td>
-                        <td>Ramírez</td>
-                        <td>11223344</td>
-                        <td>998877665</td>
-                        <td>Cusco, Perú</td>
-                        <td class="actions">
-                            <button class="edit">Editar</button>
-                            <button class="delete">Eliminar</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Ana</td>
-                        <td>Torres</td>
-                        <td>55667788</td>
-                        <td>900112233</td>
-                        <td>Pucallpa, Perú</td>
-                        <td class="actions">
-                            <button class="edit">Editar</button>
-                            <button class="delete">Eliminar</button>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody id="tabla-cuerpo" class="divide-y divide-gray-200">
+                    </tbody>
             </table>
         </div>
-    </div>
-    </div> 
-    
+    </main>
+
+    <script>
+        // 1. Datos iniciales
+        let huespedes = [
+            { id: 101, nombre: "ZEZTZ", habitacion: "Suite 077", checkIn: "2026-04-18", checkOut: "2026-04-20" },
+            { id: 102, nombre: "DRIVE", habitacion: "Simple 105", checkIn: "2026-04-19", checkOut: "2026-04-21" },
+            { id: 103, nombre: "GAVV", habitacion: "Simple 054", checkIn: "2026-04-20", checkOut: "2026-04-22" },
+            { id: 104, nombre: "DOUBLE", habitacion: "Simple 011", checkIn: "2026-04-21", checkOut: "2026-04-23" },
+             { id: 105, nombre: "FOURZE", habitacion: "Simple 035", checkIn: "2026-04-22", checkOut: "2026-04-21" }
+        ];
+
+        // 2. Función para renderizar (dibujar) la tabla
+        function renderizarTabla() {
+            const tbody = document.getElementById('tabla-cuerpo');
+            tbody.innerHTML = ''; // Limpiamos la tabla antes de redibujar
+
+            huespedes.forEach(h => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="p-4">${h.id}</td>
+                        <td class="p-4">${h.nombre}</td>
+                        <td class="p-4">${h.habitacion}</td>
+                        <td class="p-4">${h.checkIn}</td>
+                        <td class="p-4">${h.checkOut}</td>
+                        <td class="p-4 space-x-2">
+                            <button onclick="editarHuesped(${h.id})" class="text-blue-500 hover:underline">Editar</button>
+                            <button onclick="eliminarHuesped(${h.id})" class="text-red-500 hover:underline">Eliminar</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // 3. Función Eliminar
+        function eliminarHuesped(id) {
+            if (confirm("¿Estás seguro de que deseas eliminar este registro?")) {
+                huespedes = huespedes.filter(h => h.id !== id);
+                renderizarTabla();
+            }
+        }
+
+        // 4. Función Editar
+        function editarHuesped(id) {
+            const huesped = huespedes.find(h => h.id === id);
+            const nuevoNombre = prompt("Editar nombre del huésped:", huesped.nombre);
+            
+            if (nuevoNombre !== null) {
+                huesped.nombre = nuevoNombre;
+                renderizarTabla();
+            }
+        }
+
+        // Inicializar la tabla al cargar la página
+        renderizarTabla();
+    </script>
 </body>
 </html>
