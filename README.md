@@ -1,6 +1,6 @@
 ## TRELLO
 Más info en [mi tablero de trello](https://trello.com/b/4lC3J8oT/java-proyecto-senati)
-![TRELLO](https://trello.com/b/4lC3J8oT/java-proyecto-senati)
+![TRELLO](C:\Users\wilfer\OneDrive\Documentos\trello_imagen.png)
 
 ---
 # Sistema de Préstamos Gota a Gota
