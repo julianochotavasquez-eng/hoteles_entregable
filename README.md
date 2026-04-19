@@ -3,7 +3,7 @@ Más info en [mi tablero de trello](C:\Users\wilfer\OneDrive\Documentos\trello_i
 ![TRELLO](https://trello.com/b/BP8J4URp/marks-jhuliano-alquileres)
 
 ---
-# Sistema de hospeedaje de hotel
+# Sistema de hospedaje de hotel
 
 ## Descripcion del negocio
 Nombre: Prestamos Gota a Gota <br>
