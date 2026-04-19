@@ -1,10 +1,9 @@
 ## TRELLO
-Más info en [mi tablero de trello](https://trello.com/b/4lC3J8oT/java-proyecto-senati)
+Más info en [mi tablero de trello](C:\Users\wilfer\OneDrive\Documentos\trello_imagen.png)
 ![TRELLO](C:\Users\wilfer\OneDrive\Documentos\trello_imagen.png)
 
 ---
-# Sistema de Préstamos Gota a Gota
-Sistema web para la gestión de préstamos a crédito con facilidades de pago diario, semanal y mensual. Desarrollado como proyecto final del curso de Java Web en SENATI.
+# Sistema de hospeedaje de hotel
 
 ## Descripcion del negocio
 Nombre: Prestamos Gota a Gota <br>
